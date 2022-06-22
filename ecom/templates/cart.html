@@ -1,0 +1,228 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %} 
+
+<div id="mainBody">
+	<div class="container">
+	<div class="row">
+<!-- Sidebar ================================================== -->
+<div id="sidebar" class="span3">
+	<div class="well well-small"><a id="myCart" href="product_summary.html"><img src="{% static 'themes/images/ico-cart.png' %}" alt="cart">{{len}} Items in your cart  <span class="badge badge-warning pull-right">${{final_total_price}}</span></a></div>
+	<ul id="sideManu" class="nav nav-tabs nav-stacked">
+		<li class="subMenu open"><a> ELECTRONICS [230]</a>
+			<ul>
+			<li><a class="active" href="products.html"><i class="icon-chevron-right"></i>Cameras (100) </a></li>
+			<li><a href="products.html"><i class="icon-chevron-right"></i>Computers, Tablets & laptop (30)</a></li>
+			<li><a href="products.html"><i class="icon-chevron-right"></i>Mobile Phone (80)</a></li>
+			<li><a href="products.html"><i class="icon-chevron-right"></i>Sound & Vision (15)</a></li>
+			</ul>
+		</li>
+		<li class="subMenu"><a> CLOTHES [840] </a>
+		<ul style="display:none">
+			<li><a href="products.html"><i class="icon-chevron-right"></i>Women's Clothing (45)</a></li>
+			<li><a href="products.html"><i class="icon-chevron-right"></i>Women's Shoes (8)</a></li>												
+			<li><a href="products.html"><i class="icon-chevron-right"></i>Women's Hand Bags (5)</a></li>	
+			<li><a href="products.html"><i class="icon-chevron-right"></i>Men's Clothings  (45)</a></li>
+			<li><a href="products.html"><i class="icon-chevron-right"></i>Men's Shoes (6)</a></li>												
+			<li><a href="products.html"><i class="icon-chevron-right"></i>Kids Clothing (5)</a></li>												
+			<li><a href="products.html"><i class="icon-chevron-right"></i>Kids Shoes (3)</a></li>												
+		</ul>
+		</li>
+		<li class="subMenu"><a>FOOD AND BEVERAGES [1000]</a>
+			<ul style="display:none">
+			<li><a href="products.html"><i class="icon-chevron-right"></i>Angoves  (35)</a></li>
+			<li><a href="products.html"><i class="icon-chevron-right"></i>Bouchard Aine & Fils (8)</a></li>												
+			<li><a href="products.html"><i class="icon-chevron-right"></i>French Rabbit (5)</a></li>	
+			<li><a href="products.html"><i class="icon-chevron-right"></i>Louis Bernard  (45)</a></li>
+			<li><a href="products.html"><i class="icon-chevron-right"></i>BIB Wine (Bag in Box) (8)</a></li>												
+			<li><a href="products.html"><i class="icon-chevron-right"></i>Other Liquors & Wine (5)</a></li>												
+			<li><a href="products.html"><i class="icon-chevron-right"></i>Garden (3)</a></li>												
+			<li><a href="products.html"><i class="icon-chevron-right"></i>Khao Shong (11)</a></li>												
+		</ul>
+		</li>
+		<li><a href="products.html">HEALTH & BEAUTY [18]</a></li>
+		<li><a href="products.html">SPORTS & LEISURE [58]</a></li>
+		<li><a href="products.html">BOOKS & ENTERTAINMENTS [14]</a></li>
+	</ul>
+	<br/>
+	  <div class="thumbnail">
+		<img src=" {% static 'themes/images/products/panasonic.jpg' %}" alt="Bootshop panasonoc New camera"/>
+		<div class="caption">
+		  <h5>Panasonic</h5>
+			<h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
+		</div>
+	  </div><br/>
+		<div class="thumbnail">
+			<img src="{% static 'themes/images/products/kindle.png' %}" title="Bootshop New Kindel" alt="Bootshop Kindel">
+			<div class="caption">
+			  <h5>Kindle</h5>
+				<h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
+			</div>
+		  </div><br/>
+		<div class="thumbnail">
+			<img src="{% static 'themes/images/payment_methods.png' %}" title="Bootshop Payment Methods" alt="Payments Methods">
+			<div class="caption">
+			  <h5>Payment Methods</h5>
+			</div>
+		  </div>
+</div>
+
+<!-- Sidebar end=============================================== -->
+	<div class="span9">
+    <ul class="breadcrumb">
+		<li><a href="index.html">Home</a> <span class="divider">/</span></li>
+		<li class="active"> SHOPPING CART</li>
+    </ul>
+	<h3>  SHOPPING CART [ <small>{{len}} Item(s) </small>]<a href="{% url 'products' %}" class="btn btn-large pull-right"><i class="icon-arrow-left"></i> Continue Shopping </a></h3>	
+	<hr class="soft"/>
+
+	{% if user.is_authenticated%}
+
+	{% else %}
+	<table class="table table-bordered">
+		<tr><th> I AM ALREADY REGISTERED  </th></tr>
+		 <tr> 
+		 <td>
+			<form class="form-horizontal">
+				<div class="control-group">
+				  <label class="control-label" for="inputUsername">Username</label>
+				  <div class="controls">
+					<input type="text" id="inputUsername" placeholder="Username">
+				  </div>
+				</div>
+				<div class="control-group">
+				  <label class="control-label" for="inputPassword1">Password</label>
+				  <div class="controls">
+					<input type="password" id="inputPassword1" placeholder="Password">
+				  </div>
+				</div>
+				<div class="control-group">
+				  <div class="controls">
+					<button type="submit" class="btn">Sign in</button> OR <a href="register.html" class="btn">Register Now!</a>
+				  </div>
+				</div>
+				<div class="control-group">
+					<div class="controls">
+					  <a href="forgetpass.html" style="text-decoration:underline">Forgot password ?</a>
+					</div>
+				</div>
+			</form>
+		  </td>
+		  </tr>
+	</table>		
+	{% endif %}		
+
+
+
+	<table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Description</th>
+                  <th>Quantity/Update</th>
+				  <th>Price</th>
+                  <th>Discount</th>
+    
+                  <th>Total</th>
+				</tr>
+              </thead>
+              <tbody>
+				  {% for cart in carts %}
+                <tr>
+                  <td> <img width="60" src="{{cart.product.image.url}}" alt=""/></td>
+                  <td>{{cart.product.name}}<br/>Color : {{cart.product.color}}<, Brand : {{cart.product.brand}}</td>
+				  <td>
+					<div class="input-append">
+						<input class="span1" style="max-width:34px" placeholder="{{cart.quantity}}" id="appendedInputButtons" size="16" type="text"> 
+						
+						
+						<a class="btn" href="{% url 'remove_from_cart' cart.product.unique_id %}">  <i class="icon-minus"></i>  </a> 
+						<a class="btn" href="{% url 'add_to_cart' cart.product.unique_id %}">  <i class="icon-plus"></i>  </a>
+
+
+						 <a href="{% url 'delete_cart' cart.product.unique_id%}" class="btn btn-danger"><i class="icon-remove icon-white"></i></a>				
+					</div>
+				  </td>
+                  <td>${{cart.product.price}}</td>
+                  <td>${{cart.discount}}</td>
+                
+                  <td>${{cart.final_total_money}}</td>
+                </tr>
+
+				{% endfor %}
+
+	          
+				 
+                <tr>
+                  <td colspan="6" style="text-align:right">Total Price:	</td>
+                  <td> ${{total_price}}</td>
+                </tr>
+
+			
+				 <tr>
+                  <td colspan="6" style="text-align:right">Total Discount:	</td>
+                  <td> ${{total_discount}}</td>
+                </tr>
+              
+				 <tr>
+                  <td colspan="6" style="text-align:right"><strong>TOTAL (${{total_price}} - ${{total_discount}}) =</strong></td>
+                  <td class="label label-important" style="display:block"> <strong> ${{final_total_price}}</strong></td>
+                </tr>
+			  </tbody>
+            </table>
+		
+		
+            {% comment %} <table class="table table-bordered">
+			<tbody>
+				 <tr>
+                  <td> 
+				<form class="form-horizontal">
+				<div class="control-group">
+				<label class="control-label"><strong> VOUCHERS CODE: </strong> </label>
+				<div class="controls">
+				<input type="text" class="input-medium" placeholder="CODE">
+				<button type="submit" class="btn"> ADD </button>
+				</div>
+				</div>
+				</form>
+				</td>
+                </tr>
+				
+			</tbody>
+			</table> {% endcomment %}
+			
+			{% comment %} <table class="table table-bordered">
+			 <tr><th>ESTIMATE YOUR SHIPPING </th></tr>
+			 <tr> 
+			 <td>
+				<form class="form-horizontal">
+				  <div class="control-group">
+					<label class="control-label" for="inputCountry">Country </label>
+					<div class="controls">
+					  <input type="text" id="inputCountry" placeholder="Country">
+					</div>
+				  </div>
+				  <div class="control-group">
+					<label class="control-label" for="inputPost">Post Code/ Zipcode </label>
+					<div class="controls">
+					  <input type="text" id="inputPost" placeholder="Postcode">
+					</div>
+				  </div>
+				  <div class="control-group">
+					<div class="controls">
+					  <button type="submit" class="btn">ESTIMATE </button>
+					</div>
+				  </div>
+				</form>				  
+			  </td>
+			  </tr>
+            </table>		 {% endcomment %}
+	<a href="{% url 'products' %}" class="btn btn-large"><i class="icon-arrow-left"></i> Continue Shopping </a>
+	<a href="{% url 'checkout' %}" class="btn btn-large pull-right">Next <i class="icon-arrow-right"></i></a>
+	
+</div>
+</div></div>
+</div>
+<!-- MainBody End ============================= -->
+{% endblock %}
