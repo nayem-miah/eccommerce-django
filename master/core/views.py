@@ -15,7 +15,7 @@ from .forms import CheckoutForm
 from .models import *
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
-print('hello')
+print('helloff')
 
 def create_ref_code():
     return ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
